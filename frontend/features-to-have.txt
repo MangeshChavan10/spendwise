@@ -1,0 +1,80 @@
+🧩 Backend (Node.js + Express + MongoDB or similar)
+1. Models
+User Model
+username, email, password (hashed)
+optional: income, currency, profilePic
+
+Expense Model
+userId (ref → User)
+title or category (e.g., Food, Rent)
+amount
+date
+paymentMode (cash, card, UPI)
+note (optional)
+createdAt, updatedAt
+
+2. Controllers (CRUD Operations)
+UserController
+registerUser
+loginUser (with JWT)
+getUserProfile, updateUser, deleteUser
+ExpenseController
+addExpense
+getAllExpenses (by user)
+getExpenseById
+updateExpense
+deleteExpense
+getFilteredExpenses (by category/date/payment mode/range)
+
+3. Routes
+/api/users -> register, login, profile
+/api/expenses -> add, list, filter, update, delete
+
+4. Middleware
+authMiddleware → verify JWT tokens
+errorHandler
+validation (Joi or express-validator)
+
+5. Database
+
+MongoDB (via Mongoose)
+indexes for faster filtering (e.g., userId, date)
+
+💻 Frontend (React)
+1. Pages
+Home Page
+Show all expenses in a list/table
+Filters: date range, category, payment mode
+Total spent (month/year)
+Option to delete/edit
+Add Expense Page
+Form with inputs: title, amount, category, date, note
+Submit to backend (POST)
+
+Login / Register Page
+JWT auth; redirect to home on success
+
+Dashboard (optional)
+Charts (Pie/Bar): spending by category/month
+Budget summary
+
+2. Components
+ExpenseCard / ExpenseTable
+FilterBar (dropdowns, date picker)
+Navbar / Sidebar
+AddExpenseForm
+LoginForm, RegisterForm
+ProtectedRoute
+
+3. State Management
+
+React Query / Redux / Context API
+Auth token handling
+Expense data fetching & caching
+
+4. Extras (for polish)
+
+Charts: recharts or chart.js
+Export: CSV / PDF of expenses
+Dark Mode
+Responsive UI (Tailwind / MUI)
